@@ -9,24 +9,24 @@ const perguntas = [
         enunciado: " como a tecnologia de luz e ultilizada para verificar se a bola e volei cruzou ou nao a linha durante um jogo, de acordo com as regras oficiais?",
         alternativas: [
             {
-                texto: "sim",
+                texto: "sensores e luz determinam e a bola cruzou a linha e volei",
                 afirmacao: "afirmação"
             },
             {
-                texto: "não",
+                texto: "porque com a falta e luz nao teria como rever o lancamento",
                 afirmacao: "afirmação"
             }
         ]
     },
     {
-        enunciado: "Com a descoberta desta tecnologia, chamada Inteligência Artificial, uma professora de tecnologia da escola decidiu fazer uma sequência de aulas sobre esta tecnologia. No fim de uma aula ela pede que você escreva um trabalho sobre o uso de IA em sala de aula. Qual atitude você toma?",
+        enunciado: "como os jogadores lidam com o calor durante campeonatos de futebol realizados em regioẽs muito quentes?",
         alternativas: [
             {
-                texto: "Utiliza uma ferramenta de busca na internet que utiliza IA para que ela ajude a encontrar informações relevantes para o trabalho e explique numa linguagem que facilite o entendimento.",
+                texto: "jogadores lidam com o calor usando hidratacao frequente e descansos estrategicos",
                 afirmacao: "afirmação"
             },
             {
-                texto: "Escreve o trabalho com base nas conversas que teve com colegas, algumas pesquisas na internet e conhecimentos próprios sobre o tema.",
+                texto: "estrategias incluem vestimentas leves e adaptações no jogo para minimizar o impacto do calor",
                 afirmacao: "afirmação"
             }
         ]
@@ -54,7 +54,7 @@ const perguntas = [
             {
                 texto: "Criar uma imagem utilizando um gerador de imagem de IA.",
                 afirmacao: "afirmação"
-            } caixaPrincipal
+            }
         ]
     },
     {
@@ -71,3 +71,42 @@ const perguntas = [
         ]
     },
 ];
+
+let atual = 0;
+let perguntaAtual;
+let historiaFinal = "";
+
+function mostraPergunta() {
+    if (atual >= perguntas.length) {
+        mostraResultado();
+        return;
+    }
+    perguntaAtual = perguntas[atual];
+    caixaPerguntas.textContent = perguntaAtual.enunciado;
+    caixaAlternativas.textContent = "";
+    mostraAlternativas();
+}
+
+function mostraAlternativas(){
+    for(const alternativa of perguntaAtual.alternativas) {
+        const botaoAlternativas = document.createElement("button");
+        botaoAlternativas.textContent = alternativa.texto;
+        botaoAlternativas.addEventListener("click", () => respostaSelecionada(alternativa));
+        caixaAlternativas.appendChild(botaoAlternativas);
+    }
+}
+
+function respostaSelecionada(opcaoSelecionada) {
+    const afirmacoes = opcaoSelecionada.afirmacao;
+    historiaFinal += afirmacoes + " ";
+    atual++;
+    mostraPergunta();
+}
+
+function mostraResultado() {
+    caixaPerguntas.textContent = "Em 2049...";
+    textoResultado.textContent = historiaFinal;
+    caixaAlternativas.textContent = "";
+}
+
+mostraPergunta();
