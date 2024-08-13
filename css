@@ -2,7 +2,7 @@
     --cor-fundo: #01080E ;
     --cor-principal: #0B0D20 ;
     --cor-secundaria: #212333; 
-    --cor-destaque: #2BDEFD;
+    --cor-destaque: #9321b6;
     --cor-texto: #D7F9FF;
 
 }
@@ -25,7 +25,7 @@ body {
     max-width: 600px;
     text-align: center;
     padding: 20px;
-    border-color: greenyellow;
+    border-color: rgb(255, 47, 47);
     border-style: groove;
 }
 
