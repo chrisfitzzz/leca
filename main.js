@@ -109,4 +109,8 @@ function mostraResultado() {
     caixaAlternativas.textContent = "";
 }
 
+function aleatoria(lista){
+    const posicao = math.rondom()*lista.length;
+}
+
 mostraPergunta();
